@@ -2,6 +2,9 @@ const express = require("express");
 const app = express(); 
 const db = require("./infra/db/db"); 
 
+
+const itemsRoutes = require("./interfaces/web/routes/item.routes"); 
+app.use("/items", itemsRoutes); 
 app.use("/", (req, res, next) => { 
     res.json({ 
         message: "wellcome !", 
@@ -9,6 +12,8 @@ app.use("/", (req, res, next) => {
         data: null,
     })
 }) 
+
+
 
 db 
 .sync() 
