@@ -15,7 +15,6 @@ exports.getAllItems = async(req, res, next) => {
 
 exports.addItem = async(req, res, next) => { 
     try {
-        console.log(req.body)
         const addedItem = await itemsUseCases.addItem(req.body); 
         return res.status(200).json({ 
             message: "item added", 
@@ -24,5 +23,48 @@ exports.addItem = async(req, res, next) => {
         })        
     } catch (err) {
         throw err;
+    }
+} 
+
+exports.getItem = async(req, res, next) => { 
+    try {
+        const id = req.params.id;  
+        console.log(id); 
+        const itemFound = await itemsUseCases.getItem(id); 
+        return res.status(200).json({ 
+            message: "item fetched", 
+            status: 1, 
+            data: itemFound,
+        })    
+    } catch (err) {
+        throw err; 
+    }
+}   
+
+exports.updateItem = async(req, res, next) => { 
+    try {
+        const id = req.params.id; 
+        const updatedItem = await itemsUseCases.updateItem(id, req.body); 
+        return res.status(200).json({ 
+            message: "item updated", 
+            status: 1, 
+            data: updatedItem,
+        })  
+    } catch (err) {
+        throw err; 
+    }
+}
+
+exports.deleteItem = async(req, res, next) => { 
+    try {  
+        const itemId = req.params.id; 
+        await itemsUseCases.deleteItem(itemId);
+        return res.status(200).json({ 
+            message: "item deleted ", 
+            status: 1, 
+            data: null,
+        })    
+    } catch (err) {
+        throw err; 
     }
 }
