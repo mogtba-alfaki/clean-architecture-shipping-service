@@ -9,6 +9,11 @@ const Item = db.define("item", {
     }, 
 
     type: Sequelize.STRING(100), 
+    description: Sequelize.STRING,  
+    breakable: Sequelize.BOOLEAN, 
+    address_lat: Sequelize.STRING, 
+    address_lng: Sequelize.STRING, 
+    address: Sequelize.STRING 
 }); 
 
 module.exports = Item; 

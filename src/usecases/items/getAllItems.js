@@ -1,6 +1,6 @@
-function getAllItemsFactory(itemModel) { 
+function getAllItemsFactory(itemAccess) { 
       return  async function getAllItems() { 
-            return await itemModel.getAllItems(); 
+            return await itemAccess.getAllItems(); 
         }
 } 
 

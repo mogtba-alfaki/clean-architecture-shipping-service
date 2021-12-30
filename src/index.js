@@ -1,6 +1,9 @@
+const { urlencoded } = require("express");
 const express = require("express"); 
 const app = express(); 
 const db = require("./infra/db/db"); 
+
+app.use(express.json(urlencoded({extended: false})));
 
 
 const itemsRoutes = require("./interfaces/web/routes/item.routes"); 

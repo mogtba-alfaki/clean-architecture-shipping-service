@@ -1,7 +1,7 @@
 const makeItemFactory = require("./item"); 
+const errorHandler = require("../../util/errorHandler"); 
 
-
-const item = makeItemFactory(); 
+const item = makeItemFactory(errorHandler); 
 
 
 
