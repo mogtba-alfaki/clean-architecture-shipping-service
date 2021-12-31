@@ -27,12 +27,12 @@ function shipmentData(shipmentModel, errorHandler) {
     } 
     
     async function updateShipment(shipmentId, data) { 
-        const shipmentFound = await getshipmentById(shipmentId); 
+        const shipmentFound = await getShipmentById(shipmentId); 
         return  await shipmentFound.update(data); 
     }
 
     async function deleteShipment(shipmentId) { 
-        await getshipmentById(shipmentId); 
+        await getShipmentById(shipmentId); 
         await shipmentModel.destroy({where: {"id": shipmentId}});  
         return;
     }

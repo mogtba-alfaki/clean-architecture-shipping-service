@@ -7,7 +7,11 @@ app.use(express.json(urlencoded({extended: false})));
 
 
 const itemsRoutes = require("./interfaces/web/routes/item.routes"); 
-app.use("/items", itemsRoutes); 
+const shipmentsRoutes = require("./interfaces/web/routes/shipment.routes"); 
+
+app.use("/items", itemsRoutes);  
+app.use("/shipments", shipmentsRoutes); 
+
 app.use("/", (req, res, next) => { 
     res.json({ 
         message: "wellcome !", 
@@ -27,8 +31,8 @@ app.use((error, req, res, next) => {
 
 
 db 
-// .sync() 
-.sync({  force: true}) 
+.sync() 
+// .sync({  force: true}) 
 .then(() => { 
 app.listen(5000, () => {  
     console.log(`
