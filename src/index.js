@@ -16,6 +16,14 @@ app.use("/", (req, res, next) => {
     })
 }) 
 
+app.use((error, req, res, next) => { 
+    console.log("         ||   GLOBAL ERROR HANDLER ||      "); 
+    console.log(error);  
+    return res.status(error.status).json({ 
+        message: error.message,  
+        success: 0, 
+    }); 
+}); 
 
 
 db 

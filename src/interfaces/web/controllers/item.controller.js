@@ -1,4 +1,5 @@
 const itemsUseCases = require("../../../usecases/items"); 
+const errorHandler = require("../../../util/errorHandler"); 
 
 exports.getAllItems = async(req, res, next) => { 
     try {
@@ -9,7 +10,8 @@ exports.getAllItems = async(req, res, next) => {
             data: allItems,
         })
     } catch (err) {
-        throw err; 
+       const error = errorHandler.handleError(err); 
+       next(error);  
     }
 } 
 
@@ -22,7 +24,8 @@ exports.addItem = async(req, res, next) => {
             data: addedItem,
         })        
     } catch (err) {
-        throw err;
+       const error = errorHandler.handleError(err); 
+       next(error); 
     }
 } 
 
@@ -37,7 +40,8 @@ exports.getItem = async(req, res, next) => {
             data: itemFound,
         })    
     } catch (err) {
-        throw err; 
+       const error = errorHandler.handleError(err); 
+       next(error);  
     }
 }   
 
@@ -51,7 +55,8 @@ exports.updateItem = async(req, res, next) => {
             data: updatedItem,
         })  
     } catch (err) {
-        throw err; 
+       const error = errorHandler.handleError(err); 
+       next(error);  
     }
 }
 
@@ -65,6 +70,7 @@ exports.deleteItem = async(req, res, next) => {
             data: null,
         })    
     } catch (err) {
-        throw err; 
+       const error = errorHandler.handleError(err); 
+       next(error);  
     }
 }
