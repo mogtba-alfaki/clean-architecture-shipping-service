@@ -29,10 +29,11 @@ app.use((error, req, res, next) => {
     }); 
 }); 
 
-
+const assosiateModels  = require("./util/assosiateModels"); 
+assosiateModels(); 
 db 
-.sync() 
-// .sync({  force: true}) 
+// .sync() 
+.sync({  force: true}) 
 .then(() => { 
 app.listen(5000, () => {  
     console.log(`
