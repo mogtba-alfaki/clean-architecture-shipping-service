@@ -12,13 +12,21 @@ const shipmentsRoutes = require("./interfaces/web/routes/shipment.routes");
 app.use("/items", itemsRoutes);  
 app.use("/shipments", shipmentsRoutes); 
 
-app.use("/", (req, res, next) => { 
+app.get("/", (req, res, next) => { 
     res.json({ 
         message: "wellcome !", 
         status: 1, 
         data: null,
     })
 }) 
+
+app.use((req, res, next) => { 
+    return res.status(404).json({
+        message: "no such route", 
+        status: 0, 
+        data: null,
+    })
+})
 
 app.use((error, req, res, next) => { 
     console.log("         ||   GLOBAL ERROR HANDLER ||      "); 
@@ -32,8 +40,8 @@ app.use((error, req, res, next) => {
 const assosiateModels  = require("./util/assosiateModels"); 
 assosiateModels(); 
 db 
-// .sync() 
-.sync({  force: true}) 
+.sync() 
+// .sync({  force: true}) 
 .then(() => { 
 app.listen(5000, () => {  
     console.log(`

@@ -89,4 +89,19 @@ exports.deleteItem = async(req, res, next) => {
        const error = errorHandler.handleError(err); 
        next(error);  
     }
+} 
+
+exports.processItem = async (req, res, next) => { 
+    try {
+        const itemId = req.params.id; 
+        const processedItem = await itemsUseCases.processItem(itemId);
+        return res.status(200).json({ 
+            message: "item processed", 
+            status: 1, 
+            data: processedItem,
+        })    
+    } catch (err) {
+        const error = errorHandler.handleError(err); 
+        next(error);  
+    }
 }

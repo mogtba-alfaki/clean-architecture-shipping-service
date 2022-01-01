@@ -3,7 +3,7 @@ function makeShipmentFactory(errorHandler) {
         { 
             id, 
             item_id, 
-            arrival_date = new Date(),
+            arrival_date = null,
             arrived = false, 
             address,     
             address_lat, 
