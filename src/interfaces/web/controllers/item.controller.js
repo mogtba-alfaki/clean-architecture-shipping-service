@@ -60,6 +60,22 @@ exports.updateItem = async(req, res, next) => {
     }
 }
 
+
+exports.markBreakable = async(req, res, next) => { 
+    try {
+        const id = req.params.id; 
+        const markedItem = await itemsUseCases.markBreakable(id); 
+        return res.status(200).json({
+            message: "item marked breakable", 
+            status: 1, 
+            data: markedItem,
+        })
+    } catch (err) {
+        const error = errorHandler.handleError(err); 
+        next(error); 
+    }
+}
+
 exports.deleteItem = async(req, res, next) => { 
     try {  
         const itemId = req.params.id; 

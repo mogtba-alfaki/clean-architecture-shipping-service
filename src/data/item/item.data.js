@@ -5,7 +5,8 @@ function itemData(itemModel, errorHandler) {
             addItem, 
             getItemById, 
             deleteItem,
-            updateItem
+            updateItem, 
+            markBreakable,
         }); 
         
         async function getAllItems() { 
@@ -35,6 +36,10 @@ function itemData(itemModel, errorHandler) {
             await getItemById(itemId); 
             await itemModel.destroy({where: {"id": itemId}});  
             return;
+        } 
+
+        async function markBreakable(itemId) { 
+            return await updateItem(itemId, {"breakable": true}); 
         }
 
 } 
