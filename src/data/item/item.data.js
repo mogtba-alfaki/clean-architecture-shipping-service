@@ -19,7 +19,7 @@ function itemData(itemModel, errorHandler) {
                 return result; 
         } 
 
-        async function getItemById(itemId) { 
+        async function getItemById(itemId) {  
             const result = await itemModel.findOne({where: {"id": itemId}}) 
             if(!result) { 
                 errorHandler.createAndThrowError("no item found", 404);
