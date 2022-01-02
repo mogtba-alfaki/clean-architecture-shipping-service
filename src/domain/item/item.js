@@ -1,5 +1,5 @@
 function makeItemFactory(errorHandler) { 
-    return function itemFactory({id, type, description, breakable, address_lat, address_lng, address, sender_id} = {}) {  
+    return function itemFactory({id, type, description, breakable, address_lat, address_lng, address} = {}) {  
         // validation rules can be appiled here 
         if(!description) {   
             errorHandler.createAndThrowError("description is required", 400);  
@@ -14,7 +14,6 @@ function makeItemFactory(errorHandler) {
         return Object.freeze({ 
             id,
             type, 
-            sender_id,   
             description, 
             address,  
             address_lat, 

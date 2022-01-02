@@ -14,7 +14,8 @@ const Shipment = db.define("shipment", {
     arrived: Sequelize.BOOLEAN, 
     address_lat: Sequelize.STRING(100), 
     address_lng: Sequelize.STRING(100), 
-    address: Sequelize.STRING(100)  
+    address: Sequelize.STRING(100),  
+    ready_for_delivery: Sequelize.BOOLEAN,
     // foreign key for item_id
     
 }); 

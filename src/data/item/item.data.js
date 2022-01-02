@@ -5,7 +5,8 @@ function itemData(itemModel, errorHandler) {
             addItem, 
             getItemById, 
             deleteItem,
-            updateItem
+            updateItem, 
+            markBreakable,
         }); 
         
         async function getAllItems() { 
@@ -18,7 +19,7 @@ function itemData(itemModel, errorHandler) {
                 return result; 
         } 
 
-        async function getItemById(itemId) { 
+        async function getItemById(itemId) {  
             const result = await itemModel.findOne({where: {"id": itemId}}) 
             if(!result) { 
                 errorHandler.createAndThrowError("no item found", 404);
@@ -35,6 +36,10 @@ function itemData(itemModel, errorHandler) {
             await getItemById(itemId); 
             await itemModel.destroy({where: {"id": itemId}});  
             return;
+        } 
+
+        async function markBreakable(itemId) { 
+            return await updateItem(itemId, {"breakable": true}); 
         }
 
 } 
