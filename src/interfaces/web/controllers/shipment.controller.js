@@ -59,6 +59,21 @@ exports.updateShipment = async(req, res, next) => {
        const error = errorHandler.handleError(err); 
        next(error);  
     }
+} 
+
+exports.markReadyForDelivery = async (req, res, next) => { 
+    try {
+        const id = req.params.id; 
+        const markedShipment = await shipmentUseCases.markReadyForDelivery(id); 
+        return res.status(200).json({ 
+            message: "Shipment marked ready for delivery", 
+            status: 1, 
+            data: markedShipment,
+        })  
+    } catch (err) {
+        const error = errorHandler.handleError(err); 
+        next(error);  
+    }
 }
 
 exports.deleteShipment = async(req, res, next) => { 

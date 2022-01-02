@@ -5,6 +5,7 @@ function makeShipmentFactory(errorHandler) {
             item_id, 
             arrival_date = null,
             arrived = false, 
+            ready_for_delivery = false,
             address,     
             address_lat, 
             address_lng,
@@ -42,7 +43,8 @@ function makeShipmentFactory(errorHandler) {
             address, 
             address_lat, 
             address_lng, 
-            shipment_mode
+            shipment_mode,
+            ready_for_delivery,
         })
     }
 } 
