@@ -31,7 +31,8 @@ describe("add shipment usecases tests", () => {
             address_lng: "required", 
             arrival_date: Date.now(), 
             arrived: false,  
-            shipment_mode: "regular",
+            shipment_mode: "regular", 
+            ready_for_delivery: false,
         }    
         await addShipment(mockShipment); 
         expect(mockShipmentAccess.addShipment).toHaveBeenCalledWith(mockShipment); 
@@ -42,10 +43,11 @@ describe("add shipment usecases tests", () => {
             item_id : "required", 
             address: "required",     
             address_lat: "required", 
-            address_lng: "required", 
-            arrival_date: Date.now(), 
+            address_lng: "required",  
+            arrival_date: null,
             arrived: false, 
-            shipment_mode: "other"
+            shipment_mode: "other", 
+            ready_for_delivery: false,
         }  
         await addShipment(mockShipment); 
         expect(mockShipmentAccess.addShipment).toHaveBeenCalledWith(mockShipment); 
