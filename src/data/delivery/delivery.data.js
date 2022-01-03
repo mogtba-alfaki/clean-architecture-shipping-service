@@ -37,4 +37,6 @@ function deliveryData(deliveryModel, errorHandler) {
         return;
     } 
 
-}
+} 
+
+module.exports = deliveryData;

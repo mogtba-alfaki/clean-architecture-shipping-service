@@ -39,4 +39,5 @@ function makeDeliveryFactory(errorHandler) {
             shipment_id
         })
     }
-}
+} 
+module.exports = makeDeliveryFactory;
