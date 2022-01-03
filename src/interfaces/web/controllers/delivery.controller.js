@@ -58,6 +58,21 @@ exports.updateDelivery = async(req, res, next) => {
     }
 }
 
+exports.markDeliveryArrived = async(req, res, next) => { 
+    try {
+        const deliveryId = req.params.id; 
+        const markedDelivery = await deliverysUseCases.markDeliveryArrived(deliveryId);
+        return res.status(200).json({ 
+            message: "delivery marrked arrived ", 
+            status: 1, 
+            data: markedDelivery,
+        })    
+    } catch (err) {
+        const error = errorHandler.handleError(err); 
+        next(error);   
+    }
+}
+
 exports.deleteDelivery = async(req, res, next) => { 
     try {  
         const deliveryId = req.params.id; 

@@ -76,6 +76,21 @@ exports.markReadyForDelivery = async (req, res, next) => {
     }
 }
 
+exports.processShipment = async (req, res, next) => { 
+    try {  
+        const shipmentId = req.params.id; 
+        const processedShipment = await shipmentUseCases.processShipment(shipmentId); 
+        return res.status(200).json({ 
+            message: "shipment processed", 
+            status: 1, 
+            data: processedShipment,
+        })   
+    } catch (err) {
+        const error = errorHandler.handleError(err); 
+        next(error);     
+    }
+}
+
 exports.deleteShipment = async(req, res, next) => { 
     try {  
         const shipmentId = req.params.id; 
