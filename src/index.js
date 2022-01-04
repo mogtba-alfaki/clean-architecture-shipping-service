@@ -8,9 +8,11 @@ app.use(express.json(urlencoded({extended: false})));
 
 const itemsRoutes = require("./interfaces/web/routes/item.routes"); 
 const shipmentsRoutes = require("./interfaces/web/routes/shipment.routes"); 
+const deliveryRoutes = require("./interfaces/web/routes/delivery.routes"); 
 
 app.use("/items", itemsRoutes);  
 app.use("/shipments", shipmentsRoutes); 
+app.use("/deliveries", deliveryRoutes); 
 
 app.get("/", (req, res, next) => { 
     res.json({ 
